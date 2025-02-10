@@ -9,7 +9,7 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 echo "Starting Node Exporter setup..."
 
 # Fetch the latest version of Node Exporter from GitHub
-VERSION=$(curl -s https://api.github.com/repos/prometheus/node_exporter/releases/latest | grep 'tag_name' | cut -d '"' -f 4)
+VERSION=$(curl -s https://api.github.com/repos/prometheus/node_exporter/releases/latest | jq -r '.tag_name')
 echo "Latest version: $VERSION"
 
 # Download the latest version of Node Exporter
